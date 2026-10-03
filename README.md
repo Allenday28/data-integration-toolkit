@@ -23,8 +23,11 @@ two sources disagreed.
 
 ## Quick start
 
+Run these commands from the repository root. The packages live in `src/`, so add it to Python’s import path:
+
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
+export PYTHONPATH="$PWD/src"
 python examples/run_example.py
 ```
 
@@ -68,7 +71,7 @@ print(report.summary())
 | `match.py` | `FuzzyMatcher` — exact + normalized + Levenshtein key matching |
 | `merge.py` | `Merger` — apply matcher, resolve conflicts, produce `MergeReport` |
 | `validate.py` | `validate` — required fields / uniqueness / type checks |
-| `cli.py` | `python -m integration merge left.csv right.csv --config cfg.yaml` |
+| `cli.py` | `python -m integration merge left.csv right.csv --keys email,name --threshold 0.85` |
 
 ## Layout
 

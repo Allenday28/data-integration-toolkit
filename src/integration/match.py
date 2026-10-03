@@ -42,7 +42,7 @@ _WS_RE = re.compile(r"\s+")
 
 def normalize_string(value: Any) -> str:
     """Lowercase, strip, collapse whitespace, strip punctuation."""
-    if value is None or (isinstance(value, float) and pd.isna(value)):
+    if _is_null(value):
         return ""
     s = str(value).strip().lower()
     s = _PUNCT_RE.sub(" ", s)

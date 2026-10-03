@@ -146,3 +146,9 @@ def test_validate_strict_raises():
         pass
     else:
         raise AssertionError("expected ValidationError")
+
+
+def test_missing_nullable_key_does_not_match_literal_na():
+    left = pd.DataFrame({"email": pd.Series([pd.NA], dtype="string")})
+    right = pd.DataFrame({"email": ["<NA>"]})
+    assert FuzzyMatcher(keys=["email"]).match(left, right) == []
